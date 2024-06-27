@@ -1,0 +1,187 @@
+[gd_scene load_steps=23 format=3 uid="uid://bygn50xm00s00"]
+
+[ext_resource type="Script" path="res://Scenes/enemy_skeleton.gd" id="1_7bjtb"]
+[ext_resource type="Texture2D" uid="uid://bviwthf04hvam" path="res://EnemySprites/Sprites/skeleton/skeleton-1.png" id="1_fac6l"]
+[ext_resource type="Texture2D" uid="uid://cukyg84t3en52" path="res://EnemySprites/Sprites/enemy-death/enemy-death-1.png" id="2_45tkk"]
+[ext_resource type="Texture2D" uid="uid://dxbw0ve5jug3i" path="res://EnemySprites/Sprites/skeleton/skeleton-2.png" id="2_awbns"]
+[ext_resource type="Texture2D" uid="uid://bkja8md5y4fcw" path="res://EnemySprites/Sprites/enemy-death/enemy-death-2.png" id="3_0a64r"]
+[ext_resource type="Texture2D" uid="uid://d3hto5rhs1wf6" path="res://EnemySprites/Sprites/skeleton/skeleton-3.png" id="3_sf4s8"]
+[ext_resource type="Texture2D" uid="uid://bmosq47od548" path="res://EnemySprites/Sprites/enemy-death/enemy-death-3.png" id="4_j82um"]
+[ext_resource type="Texture2D" uid="uid://y5jn41x1ci7t" path="res://EnemySprites/Sprites/skeleton/skeleton-4.png" id="4_ubtxk"]
+[ext_resource type="Texture2D" uid="uid://0ftf1h1cwtpl" path="res://EnemySprites/Sprites/enemy-death/enemy-death-4.png" id="5_j47rh"]
+[ext_resource type="Texture2D" uid="uid://diespem4y7jaf" path="res://EnemySprites/Sprites/skeleton/skeleton-5.png" id="5_o3brj"]
+[ext_resource type="Texture2D" uid="uid://dyosvweu5spxk" path="res://EnemySprites/Sprites/skeleton/skeleton-6.png" id="6_nqegc"]
+[ext_resource type="Texture2D" uid="uid://sfv8h14pask5" path="res://EnemySprites/Sprites/enemy-death/enemy-death-5.png" id="6_xw46f"]
+[ext_resource type="Texture2D" uid="uid://cx08c0ov6ani4" path="res://EnemySprites/Sprites/skeleton/skeleton-7.png" id="7_md33v"]
+[ext_resource type="Texture2D" uid="uid://1hdirkr8n43a" path="res://EnemySprites/Sprites/skeleton/skeleton-8.png" id="8_y3giu"]
+[ext_resource type="Texture2D" uid="uid://dat0dtrxw8d0p" path="res://EnemySprites/Sprites/skeleton-rise/skeleton-rise-1.png" id="10_cdpc8"]
+[ext_resource type="Texture2D" uid="uid://cb4154duwjtwj" path="res://EnemySprites/Sprites/skeleton-rise/skeleton-rise-2.png" id="11_tqxb0"]
+[ext_resource type="Texture2D" uid="uid://djiw1wmmjy0de" path="res://EnemySprites/Sprites/skeleton-rise/skeleton-rise-3.png" id="12_0mkse"]
+[ext_resource type="Texture2D" uid="uid://cel36t7oyrsy2" path="res://EnemySprites/Sprites/skeleton-rise/skeleton-rise-4.png" id="13_jtmd1"]
+[ext_resource type="Texture2D" uid="uid://cgv3755wcpj4e" path="res://EnemySprites/Sprites/skeleton-rise/skeleton-rise-5.png" id="14_bv8ln"]
+[ext_resource type="Texture2D" uid="uid://10ijqnfbhesg" path="res://EnemySprites/Sprites/skeleton-rise/skeleton-rise-6.png" id="15_n65ga"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1wppo"]
+height = 44.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7q6hc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_45tkk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0a64r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_j82um")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_j47rh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xw46f")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_cdpc8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_tqxb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0mkse")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_jtmd1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_bv8ln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_n65ga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fac6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_awbns")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sf4s8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ubtxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_o3brj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nqegc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_md33v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_y3giu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fac6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_awbns")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sf4s8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ubtxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_o3brj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nqegc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_md33v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_y3giu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fac6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_awbns")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sf4s8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ubtxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_o3brj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nqegc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_md33v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_y3giu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fac6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_awbns")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sf4s8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ubtxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_o3brj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nqegc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_md33v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_y3giu")
+}],
+"loop": false,
+"name": &"new_animation",
+"speed": 4.0
+}]
+
+[node name="EnemySkeleton" type="Area2D" groups=["Hit"]]
+script = ExtResource("1_7bjtb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_1wppo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -8)
+sprite_frames = SubResource("SpriteFrames_7q6hc")
+animation = &"new_animation"
+autoplay = "new_animation"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
