@@ -32,6 +32,7 @@ func update_state():
 		else:
 			anim_state =  state.JUMP_DOWN
 
+
 func update_animation(direction):
 	if direction > 0:
 		animator.flip_h = false
@@ -52,7 +53,6 @@ func update_animation(direction):
 			animation_player.play("jump_down")
 		state.HIT:
 			animation_player.play("hit")
-
 
 func flip(val):
 	if not val:
