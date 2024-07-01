@@ -1,13 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://ccah32jhsw0wj"]
+[gd_scene load_steps=15 format=3 uid="uid://c6a0vhe38m027"]
 
 [ext_resource type="Texture2D" uid="uid://rfnckhxf531p" path="res://Maps/Environment1/env_ground.png" id="1_igieu"]
-[ext_resource type="PackedScene" uid="uid://cnpl67d03mwsa" path="res://Scenes/enemy_ghoul.tscn" id="2_7hlu7"]
-[ext_resource type="PackedScene" uid="uid://c6q4qel7hnr12" path="res://Scenes/player.tscn" id="2_iug65"]
+[ext_resource type="PackedScene" uid="uid://cbk675s8v5day" path="res://Scenes/enemy_ghoul.tscn" id="2_7hlu7"]
+[ext_resource type="PackedScene" uid="uid://dysy05wseyym" path="res://Scenes/player.tscn" id="2_iug65"]
 [ext_resource type="Texture2D" uid="uid://b3p3gr1b58dpt" path="res://Maps/Cementry/Environment2/tileset.png" id="3_bpxyg"]
 [ext_resource type="Texture2D" uid="uid://cvw7lew4kfe8q" path="res://Maps/Cementry/Environment2/background.png" id="5_60exq"]
 [ext_resource type="Texture2D" uid="uid://b62mfx5m0n3mx" path="res://Maps/Cementry/Environment2/mountains.png" id="6_l1eve"]
 [ext_resource type="Texture2D" uid="uid://cjqtx5f3s4rb6" path="res://Maps/Cementry/Environment2/graveyard.png" id="6_r6mdn"]
-[ext_resource type="PackedScene" uid="uid://bygn50xm00s00" path="res://Scenes/enemy_skeleton.tscn" id="6_yx7pd"]
+[ext_resource type="PackedScene" uid="uid://bh6ff4xit4i52" path="res://Scenes/enemy_skeleton.tscn" id="6_yx7pd"]
+[ext_resource type="PackedScene" uid="uid://dxsmlt1g8a186" path="res://Scenes/key_1.tscn" id="9_p81sp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_onb45"]
 texture = ExtResource("1_igieu")
@@ -3307,7 +3308,6 @@ offset_top = 2.0
 offset_right = 768.0
 offset_bottom = 226.0
 texture = ExtResource("5_60exq")
-expand_mode = 3
 stretch_mode = 6
 
 [node name="Mountains" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -3352,3 +3352,6 @@ position = Vector2(486, 73)
 
 [node name="EnemySkeleton3" parent="." instance=ExtResource("6_yx7pd")]
 position = Vector2(829, 15)
+
+[node name="Key 1" parent="." instance=ExtResource("9_p81sp")]
+position = Vector2(259, 77)

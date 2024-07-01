@@ -1,0 +1,109 @@
+[gd_scene load_steps=25 format=3 uid="uid://dpl3ndb3r171f"]
+
+[ext_resource type="Script" path="res://Scenes/key_2(cursed).gd" id="1_1bc3j"]
+[ext_resource type="Texture2D" uid="uid://5o6kdfm4bt21" path="res://HealthBar&EXP&Pickups/Pickups/Keys/Key 12/GOLD/Key 12 - GOLD - frame0000.png" id="1_ytwex"]
+[ext_resource type="Texture2D" uid="uid://h0nlkpej3cbx" path="res://HealthBar&EXP&Pickups/Pickups/Keys/Key 12/GOLD/Key 12 - GOLD - frame0001.png" id="2_7u4nx"]
+[ext_resource type="Texture2D" uid="uid://bqfykjhb7looi" path="res://HealthBar&EXP&Pickups/Pickups/Keys/Key 12/GOLD/Key 12 - GOLD - frame0002.png" id="3_iis1e"]
+[ext_resource type="Texture2D" uid="uid://djmxow8he5mld" path="res://HealthBar&EXP&Pickups/Pickups/Keys/Key 12/GOLD/Key 12 - GOLD - frame0003.png" id="4_llrv6"]
+[ext_resource type="Texture2D" uid="uid://cra67mjse6eve" path="res://HealthBar&EXP&Pickups/Pickups/Keys/Key 12/GOLD/Key 12 - GOLD - frame0004.png" id="5_xwiqn"]
+[ext_resource type="Texture2D" uid="uid://boifwgcxlolbj" path="res://HealthBar&EXP&Pickups/Pickups/Keys/Key 12/GOLD/Key 12 - GOLD - frame0005.png" id="6_nr5nj"]
+[ext_resource type="Texture2D" uid="uid://b1my2t2m3um1j" path="res://HealthBar&EXP&Pickups/Pickups/Keys/Key 12/GOLD/Key 12 - GOLD - frame0006.png" id="7_fgpdh"]
+[ext_resource type="Texture2D" uid="uid://dysr2gdh7nceq" path="res://HealthBar&EXP&Pickups/Pickups/Keys/Key 12/GOLD/Key 12 - GOLD - frame0007.png" id="8_gc2w7"]
+[ext_resource type="Texture2D" uid="uid://djcv0xjligcb8" path="res://HealthBar&EXP&Pickups/Pickups/Keys/Key 12/GOLD/Key 12 - GOLD - frame0008.png" id="9_rivgq"]
+[ext_resource type="Texture2D" uid="uid://s6coffxa7ts7" path="res://HealthBar&EXP&Pickups/Pickups/Keys/Key 12/GOLD/Key 12 - GOLD - frame0009.png" id="10_mfrqw"]
+[ext_resource type="Texture2D" uid="uid://cu1ebfyrghylt" path="res://HealthBar&EXP&Pickups/Pickups/Keys/Key 12/GOLD/Key 12 - GOLD - frame0010.png" id="11_w1d3u"]
+[ext_resource type="Texture2D" uid="uid://ndp5xscvgbt1" path="res://HealthBar&EXP&Pickups/Pickups/Keys/Key 12/GOLD/Key 12 - GOLD - frame0011.png" id="12_knha2"]
+[ext_resource type="Texture2D" uid="uid://8oyaatamds6" path="res://HealthBar&EXP&Pickups/Pickups/Keys/Key 12/GOLD/Key 12 - GOLD - frame0012.png" id="13_w0jpt"]
+[ext_resource type="Texture2D" uid="uid://665xdov1p5ac" path="res://HealthBar&EXP&Pickups/Pickups/Keys/Key 12/GOLD/Key 12 - GOLD - frame0013.png" id="14_3m4ps"]
+[ext_resource type="Texture2D" uid="uid://0d34n3uha0vl" path="res://HealthBar&EXP&Pickups/Pickups/Keys/Key 12/GOLD/Key 12 - GOLD - frame0014.png" id="15_gdhn3"]
+[ext_resource type="Texture2D" uid="uid://ddig4k6c66oqo" path="res://HealthBar&EXP&Pickups/Pickups/Keys/Key 12/GOLD/Key 12 - GOLD - frame0015.png" id="16_l85i5"]
+[ext_resource type="Texture2D" uid="uid://fhf6kwr1uvon" path="res://HealthBar&EXP&Pickups/Pickups/Keys/Key 12/GOLD/Key 12 - GOLD - frame0016.png" id="17_ul6iv"]
+[ext_resource type="Texture2D" uid="uid://ch145d1m7x2cp" path="res://HealthBar&EXP&Pickups/Pickups/Keys/Key 12/GOLD/Key 12 - GOLD - frame0017.png" id="18_ayr7w"]
+[ext_resource type="Texture2D" uid="uid://dn7in4yrgt410" path="res://HealthBar&EXP&Pickups/Pickups/Keys/Key 12/GOLD/Key 12 - GOLD - frame0018.png" id="19_kllx4"]
+[ext_resource type="Texture2D" uid="uid://hyhjjkdk2m7o" path="res://HealthBar&EXP&Pickups/Pickups/Keys/Key 12/GOLD/Key 12 - GOLD - frame0019.png" id="20_0w1v8"]
+[ext_resource type="Texture2D" uid="uid://cy0kyxaho11lt" path="res://HealthBar&EXP&Pickups/Pickups/Keys/Key 12/GOLD/Key 12 - GOLD - frame0020.png" id="21_61nai"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8auem"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_42bvr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ytwex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7u4nx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_iis1e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_llrv6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xwiqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nr5nj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fgpdh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gc2w7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rivgq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mfrqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_w1d3u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_knha2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_w0jpt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_3m4ps")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_gdhn3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_l85i5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ul6iv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ayr7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_kllx4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_0w1v8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_61nai")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Key 2(cursed)" type="Area2D"]
+script = ExtResource("1_1bc3j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_8auem")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_42bvr")
+frame_progress = 0.692835
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

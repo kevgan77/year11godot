@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var speed = 100.0
+@export var speed = 90.0
 @export var acceleration : float = 10.0
 @export var jump_velocity = -300.0
 @export var jumps = 1
@@ -12,9 +12,17 @@ enum state {IDLE, RUNNING, JUMP_DOWN, JUMP_UP, HIT, ATTACK}
 
 @onready var animator = $AnimatedSprite2D
 @onready var animation_player = $AnimationPlayer
+@onready var start_pos = global_position
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+func reset():
+	global_position = start_pos
+	set_physics_process(true)
+	anim_state = state.IDLE
+	#animator.position = Vector2(0.-5)
+
 
 func update_state():
 	if anim_state == state.ATTACK:
@@ -85,3 +93,18 @@ func _physics_process(delta):
 	update_state()
 	update_animation(direction)
 	move_and_slide()
+
+func enemy_checker(enemy):
+	if enemy.is_in_group("Enemy") and velocity.y > 0:
+		enemy.die()
+		velocity.y = jump_velocity
+	elif enemy.is_in_group("Hit"):
+		anim_state = state.HIT
+		
+
+func _on_hit_box_area_entered(area):
+	enemy_checker(area)
+
+
+func _on_hit_box_body_entered(body):
+	enemy_checker(body)

@@ -23,9 +23,8 @@ func take_damage():
 	await $AnimatedSprite2D.animation_finished
 	queue_free()
 
-
-
-
+func die():
+	queue_free()
 
 func _on_area_entered(area):
 	if area.is_in_group("Player_Attack"):

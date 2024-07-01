@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://b4kgfvk2culky"]
+
+[ext_resource type="Texture2D" uid="uid://cukyg84t3en52" path="res://EnemySprites/Sprites/enemy-death/enemy-death-1.png" id="1_ax0gi"]
+[ext_resource type="Texture2D" uid="uid://bkja8md5y4fcw" path="res://EnemySprites/Sprites/enemy-death/enemy-death-2.png" id="2_rwdop"]
+[ext_resource type="Texture2D" uid="uid://bmosq47od548" path="res://EnemySprites/Sprites/enemy-death/enemy-death-3.png" id="3_pk2cx"]
+[ext_resource type="Texture2D" uid="uid://0ftf1h1cwtpl" path="res://EnemySprites/Sprites/enemy-death/enemy-death-4.png" id="4_g72uc"]
+[ext_resource type="Texture2D" uid="uid://sfv8h14pask5" path="res://EnemySprites/Sprites/enemy-death/enemy-death-5.png" id="5_wa25s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mbjdc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ax0gi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rwdop")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pk2cx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_g72uc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wa25s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_oufh3"]
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["default"]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a1qwg"]
+_data = {
+"default": SubResource("Animation_oufh3")
+}
+
+[node name="Vanish" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mbjdc")
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a1qwg")
+}
+autoplay = "default"
