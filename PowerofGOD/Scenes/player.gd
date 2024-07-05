@@ -11,8 +11,10 @@ enum state {IDLE, RUNNING, JUMP_DOWN, JUMP_UP, HIT, ATTACK}
 @export var anim_state = state.IDLE
 
 @onready var animator = $AnimatedSprite2D
-@onready var animation_player = $AnimationPlayer
+#@onready var animation_player = $AnimationPlayer
 @onready var start_pos = global_position
+@onready var attack_area = $AttackArea
+@onready var animation_player = $AnimationTree["parameters/playback"]
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -50,26 +52,27 @@ func update_animation(direction):
 		flip(true)
 	match anim_state:
 		state.ATTACK:
-			animation_player.play("attack")
+			animation_player.travel("attack")
 		state.IDLE:
-			animation_player.play("idle")
+			animation_player.travel("idle")
 		state.RUNNING:
-			animation_player.play("running")
+			animation_player.travel("running")
 		state.JUMP_UP:
-			animation_player.play("jump_up")
+			animation_player.travel("jump_up")
 		state.JUMP_DOWN:
-			animation_player.play("jump_down")
+			animation_player.travel("jump_down")
 		state.HIT:
-			animation_player.play("hit")
+			animation_player.travel("hit")
 
 func flip(val):
 	if not val:
 		$CollisionShape2D.position.x = -1.5
 		animator.offset = Vector2(4, -40)
+		attack_area.scale.x = 1
 	else:
 		$CollisionShape2D.position.x = 1.5
 		animator.offset = Vector2(-6, -40)
-		
+		attack_area.scale.x = -1
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():

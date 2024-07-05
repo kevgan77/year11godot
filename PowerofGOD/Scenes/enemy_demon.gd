@@ -1,5 +1,8 @@
+class_name EnemyDemon
 extends CharacterBody2D
 
+@export var max_speed = 40.0
+@export var acceleration = 50.0
 
 const SPEED = 15.0
 const JUMP_VELOCITY = -400.0
