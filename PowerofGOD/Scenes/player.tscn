@@ -1,8 +1,9 @@
-[gd_scene load_steps=110 format=3 uid="uid://dysy05wseyym"]
+[gd_scene load_steps=111 format=3 uid="uid://dysy05wseyym"]
 
 [ext_resource type="Texture2D" uid="uid://dggjei5wad8b8" path="res://Sprites/Knight/_Idle.png" id="1_bj6h4"]
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_gjv0w"]
 [ext_resource type="Texture2D" uid="uid://dk6wo3wgy3pvi" path="res://Sprites/Knight/_Attack2NoMovement.png" id="2_72cl4"]
+[ext_resource type="PackedScene" uid="uid://df3kmlvjelg04" path="res://Scenes/fireball.tscn" id="2_rlk81"]
 [ext_resource type="Texture2D" uid="uid://jmlcmavgam8q" path="res://Sprites/Knight/_Death.png" id="3_bluhp"]
 [ext_resource type="Texture2D" uid="uid://mlgimufy7d0s" path="res://Sprites/Knight/_Run.png" id="3_ju3ha"]
 [ext_resource type="Texture2D" uid="uid://dunfg620f2xb1" path="res://Sprites/Knight/_Hit.png" id="3_n4gxg"]
@@ -668,7 +669,6 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_ll1gj"]
-length = 0.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -912,7 +912,6 @@ animation = &"jump_up"
 animation = &"running"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kbmvs"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qlyfa"]
 
@@ -921,12 +920,10 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6cujc"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aol8k"]
-switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8iomt"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5a0oo"]
-switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_qoa80"]
 states/End/position = Vector2(1130, 110)
@@ -934,20 +931,22 @@ states/Start/position = Vector2(97, 132)
 states/attack/node = SubResource("AnimationNodeAnimation_sovm7")
 states/attack/position = Vector2(468, 45.4048)
 states/hit/node = SubResource("AnimationNodeAnimation_1w8r2")
-states/hit/position = Vector2(410, 176.405)
+states/hit/position = Vector2(52, 25.405)
 states/idle/node = SubResource("AnimationNodeAnimation_kcr3v")
-states/idle/position = Vector2(317, 45.4048)
+states/idle/position = Vector2(249, 57.4048)
 states/jump_down/node = SubResource("AnimationNodeAnimation_a6da2")
 states/jump_down/position = Vector2(877, 39.4048)
 states/jump_up/node = SubResource("AnimationNodeAnimation_1vq2v")
 states/jump_up/position = Vector2(616, 88.4048)
 states/running/node = SubResource("AnimationNodeAnimation_r2ygl")
-states/running/position = Vector2(230, 192.405)
+states/running/position = Vector2(340, 183.405)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_kbmvs"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_qlyfa"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_b0dw7"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_6cujc"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_aol8k"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_8iomt"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_5a0oo")]
 graph_offset = Vector2(0, -24.5952)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_mask = 0
 script = ExtResource("1_gjv0w")
+bullet_node = ExtResource("2_rlk81")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -1.5)
@@ -957,7 +956,7 @@ shape = SubResource("CapsuleShape2D_kg4pq")
 position = Vector2(1, 16)
 sprite_frames = SubResource("SpriteFrames_nhwo6")
 animation = &"idle"
-frame = 8
+frame = 19
 offset = Vector2(-6, -40)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

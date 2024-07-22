@@ -1,11 +1,33 @@
-[gd_scene load_steps=27 format=3 uid="uid://ceealfj6ise5l"]
+[gd_scene load_steps=27 format=3 uid="uid://dx2l1mrejyknb"]
 
-[ext_resource type="Script" path="res://Scenes/enemy_demon.gd" id="1_v2uny"]
 [ext_resource type="Texture2D" uid="uid://dqsju8oudo4i7" path="res://EnemySprites/Sprites3/with_outline/IDLE.png" id="2_oo5j7"]
 [ext_resource type="Texture2D" uid="uid://slidckrookav" path="res://EnemySprites/Sprites3/with_outline/ATTACK.png" id="2_ue050"]
 [ext_resource type="Texture2D" uid="uid://drxs1i2wsthmr" path="res://EnemySprites/Sprites3/with_outline/FLYING.png" id="3_p0qi0"]
-[ext_resource type="Script" path="res://FSM/finite_state_machine.gd" id="4_rn43s"]
 [ext_resource type="Texture2D" uid="uid://d1cw0nkd64eyx" path="res://EnemySprites/Sprites3/projectile.png" id="5_x3d7g"]
+
+[sub_resource type="GDScript" id="GDScript_o24rm"]
+script/source = "class_name EnemyDemon
+extends CharacterBody2D
+
+@export var max_speed = 40.0
+@export var acceleration = 50.0
+
+const SPEED = 15.0
+const JUMP_VELOCITY = -400.0
+@onready var sprite = $Sprite
+@onready var player = get_tree().get_first_node_in_group(\"Player\")
+
+func _physics_process(delta):
+	var direction_to_player=global_position.direction_to(player.global_position)
+	velocity = direction_to_player * SPEED
+	
+	if velocity.x > 0:
+		sprite.flip_h = true 
+	else:
+		sprite.flip_h = false
+	
+	move_and_slide()
+"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k6v30"]
 radius = 20.0
@@ -156,8 +178,24 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_am2od"]
 radius = 22.0
 
+[sub_resource type="GDScript" id="GDScript_yo8j7"]
+script/source = "class_name FiniteStateMachine
+extends Node
+
+@export var state: State
+
+func _ready():
+	change_state(state)
+
+func change_state(new_state: State):
+	if state is State:
+		state._exit_state()
+	new_state._enter_state()
+	state = new_state
+"
+
 [node name="EnemyDemon" type="CharacterBody2D"]
-script = ExtResource("1_v2uny")
+script = SubResource("GDScript_o24rm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_k6v30")
@@ -178,4 +216,4 @@ shape = SubResource("CircleShape2D_am2od")
 [node name="DamageTimer" type="Timer" parent="HitBox"]
 
 [node name="FiniteStateMachine" type="Node" parent="."]
-script = ExtResource("4_rn43s")
+script = SubResource("GDScript_yo8j7")

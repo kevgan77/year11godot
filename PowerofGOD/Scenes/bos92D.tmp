@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjqlpe81ebals"]
+
+[ext_resource type="PackedScene" uid="uid://dheyy6dais2yt" path="res://Scenes/necromancer.tscn" id="1_k5nok"]
+
+[node name="BossRoomTest" type="Node2D"]
+
+[node name="Necromancer" parent="." instance=ExtResource("1_k5nok")]
+position = Vector2(557, 269)

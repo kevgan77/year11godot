@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export var jump_velocity = -300.0
 @export var jumps = 1
 
+@export var bullet_node: PackedScene
+
 enum state {IDLE, RUNNING, JUMP_DOWN, JUMP_UP, HIT, ATTACK}
 
 @export var anim_state = state.IDLE
@@ -18,6 +20,17 @@ enum state {IDLE, RUNNING, JUMP_DOWN, JUMP_UP, HIT, ATTACK}
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+func shoot():
+	var bullet = bullet_node.instantiate()
+	
+	bullet.position = global_position
+	bullet.direction = (get_global_mouse_position() - global_position).normalized()
+	get_tree().current_scene.call_deferred("add_child",bullet)
+
+func _input(event):
+	if event.is_action("shoot"):
+		shoot()
 
 func reset():
 	global_position = start_pos
