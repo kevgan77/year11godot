@@ -9,14 +9,14 @@ var direction : Vector2
 var health = 100:
 	set(value):
 		if value < health:
-			find_child("FiniteStateMachine").change_state("Stagger")
+			find_child("FiniteStateMachine2").change_state("Stagger")
  
 		health = value
 		progress_bar.value = value
  
 		if value <= 0:
 			progress_bar.visible = false
-			find_child("FiniteStateMachine").change_state("Death")
+			find_child("FiniteStateMachine2").change_state("Death")
  
  
 func _process(_delta):

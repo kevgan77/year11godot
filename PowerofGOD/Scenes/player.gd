@@ -5,6 +5,8 @@ extends CharacterBody2D
 @export var acceleration : float = 10.0
 @export var jump_velocity = -300.0
 @export var jumps = 1
+@export var health = 100
+
 
 @export var bullet_node: PackedScene
 
@@ -17,6 +19,7 @@ enum state {IDLE, RUNNING, JUMP_DOWN, JUMP_UP, HIT, ATTACK}
 @onready var start_pos = global_position
 @onready var attack_area = $AttackArea
 @onready var animation_player = $AnimationTree["parameters/playback"]
+@onready var animation = $AnimationPlayer
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -63,8 +66,11 @@ func update_animation(direction):
 	elif direction < 0:
 		animator.flip_h = true
 		flip(true)
+	if anim_state != state.ATTACK : animation.speed_scale = 1
 	match anim_state:
+		
 		state.ATTACK:
+			animation.speed_scale = WeaponSword.knife_speed
 			animation_player.travel("attack")
 		state.IDLE:
 			animation_player.travel("idle")
@@ -124,3 +130,12 @@ func _on_hit_box_area_entered(area):
 
 func _on_hit_box_body_entered(body):
 	enemy_checker(body)
+
+
+func _on_body_entered(body):
+	if body.is_in_group("Enemy"):
+		body.take_damage(WeaponSword.knife_damage)
+
+
+func _on_screen_exited():
+	queue_free()

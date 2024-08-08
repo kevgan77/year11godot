@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjqlpe81ebals"]
+[gd_scene load_steps=9 format=3 uid="uid://cjqlpe81ebals"]
 
 [ext_resource type="PackedScene" uid="uid://dheyy6dais2yt" path="res://Scenes/necromancer.tscn" id="1_k5nok"]
 [ext_resource type="PackedScene" uid="uid://dysy05wseyym" path="res://Scenes/player.tscn" id="3_hjwbr"]
 [ext_resource type="Texture2D" uid="uid://b3p3gr1b58dpt" path="res://Maps/Cementry/Environment2/tileset.png" id="4_ihx4n"]
+[ext_resource type="Texture2D" uid="uid://cvw7lew4kfe8q" path="res://Maps/Cementry/Environment2/background.png" id="4_uaqe2"]
+[ext_resource type="Texture2D" uid="uid://cjqtx5f3s4rb6" path="res://Maps/Cementry/Environment2/graveyard.png" id="5_cykd4"]
+[ext_resource type="Texture2D" uid="uid://b62mfx5m0n3mx" path="res://Maps/Cementry/Environment2/mountains.png" id="6_psuub"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jpwf4"]
 texture = ExtResource("4_ihx4n")
@@ -374,19 +377,49 @@ sources/0 = SubResource("TileSetAtlasSource_jpwf4")
 
 [node name="BossRoomTest" type="Node2D"]
 
-[node name="Necromancer" parent="." instance=ExtResource("1_k5nok")]
-position = Vector2(800, 317)
-collision_layer = 0
-
-[node name="Player" parent="." instance=ExtResource("3_hjwbr")]
-position = Vector2(415, 345)
-collision_mask = 257
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(-2, 2)
-zoom = Vector2(2.265, 2.265)
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_xg6dk")
 format = 2
 layer_0/tile_data = PackedInt32Array(1572885, 458752, 5, 1572886, 458752, 5, 1572887, 393216, 5, 1572888, 327680, 5, 1572889, 458752, 5, 1572890, 327680, 5, 1572891, 458752, 5, 1572892, 393216, 5, 1572893, 327680, 5, 1572894, 327680, 5, 1572895, 393216, 5, 1572896, 458752, 5, 1572897, 393216, 5, 1572898, 327680, 5, 1572899, 327680, 5, 1572900, 262144, 5, 1572901, 458752, 5, 1572902, 458752, 5, 1572903, 458752, 5, 1572904, 458752, 5, 1572905, 327680, 5, 1572906, 327680, 5, 1572907, 327680, 5, 1572908, 262144, 5, 1572909, 262144, 5, 1572910, 458752, 5, 1572911, 393216, 5, 1572912, 458752, 5, 1572913, 327680, 5, 1572914, 458752, 5, 1572915, 393216, 5, 1572916, 393216, 5, 1572917, 262144, 5, 1572918, 262144, 5, 1572919, 327680, 5, 1572920, 327680, 5, 1507384, 262144, 4, 1507385, 327680, 4, 1507386, 393216, 4, 1507387, 262144, 4, 1507388, 262144, 4, 1507389, 458752, 4, 1507383, 327680, 4, 1507382, 262144, 4, 1507381, 262144, 4, 1507380, 262144, 4, 1507379, 327680, 4, 1507378, 327680, 4, 1507377, 458752, 4, 1507376, 393216, 4, 1507375, 327680, 4, 1507374, 458752, 4, 1507373, 458752, 4, 1507372, 393216, 4, 1507371, 262144, 4, 1507370, 458752, 4, 1507369, 393216, 4, 1507368, 393216, 4, 1507367, 458752, 4, 1507366, 327680, 4, 1507365, 393216, 4, 1507364, 393216, 4, 1507363, 327680, 4, 1507362, 458752, 4, 1507361, 393216, 4, 1507360, 458752, 4, 1507359, 262144, 4, 1507358, 393216, 4, 1507357, 327680, 4, 1507356, 327680, 4, 1507355, 393216, 4, 1507354, 262144, 4, 1507353, 327680, 4, 1507352, 458752, 4, 1507351, 393216, 4, 1507350, 262144, 4, 1507349, 262144, 4, 1572921, 327680, 5, 1572922, 458752, 5, 1572923, 458752, 5, 1572924, 262144, 5, 1572925, 262144, 5)
+
+[node name="Player" parent="." instance=ExtResource("3_hjwbr")]
+position = Vector2(368, 350)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-3, -3)
+zoom = Vector2(2.5, 2.5)
+position_smoothing_enabled = true
+
+[node name="Necromancer" parent="." instance=ExtResource("1_k5nok")]
+position = Vector2(836, 320)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground"]
+visible = false
+offset_right = 1158.0
+offset_bottom = 650.0
+
+[node name="Moon" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/Moon"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_uaqe2")
+
+[node name="Mountains" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/Mountains"]
+offset_top = 75.0
+offset_right = 192.0
+offset_bottom = 254.0
+texture = ExtResource("6_psuub")
+
+[node name="background1" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/background1"]
+offset_top = 123.0
+offset_right = 384.0
+offset_bottom = 246.0
+texture = ExtResource("5_cykd4")

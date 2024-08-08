@@ -234,7 +234,10 @@ height = 56.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ngst"]
 radius = 100.0
 
-[node name="Necromancer" type="CharacterBody2D"]
+[node name="Necromancer" type="CharacterBody2D" groups=["Enemy"]]
+position = Vector2(-267, -41)
+collision_layer = 7
+collision_mask = 0
 script = ExtResource("1_gjkc5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -256,19 +259,15 @@ shape = SubResource("CapsuleShape2D_g5bfq")
 
 [node name="ProgressBar" type="ProgressBar" parent="UI"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(200, 0)
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = -115.5
+offset_top = 34.0
 offset_right = 100.0
-offset_bottom = -88.5
+offset_bottom = 61.0
 grow_horizontal = 2
-grow_vertical = 2
 value = 100.0
 
 [node name="Label" type="Label" parent="UI/ProgressBar"]
@@ -289,16 +288,17 @@ text = "Necromancer"
 
 [node name="Label" type="Label" parent="UI"]
 self_modulate = Color(1, 1, 1, 0)
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 offset_left = -48.5
-offset_top = -23.0
+offset_top = -11.5
 offset_right = 48.5
+offset_bottom = 11.5
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 text = "Boss Slained
 "
 
@@ -315,7 +315,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PlayerDetection" type="Area2D" parent="."]
-collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 unique_name_in_owner = true

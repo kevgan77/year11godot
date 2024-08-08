@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="PowerofGOD"
+run/main_scene="res://Scenes/menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+BgMusictest="res://Scenes/BG_musictest.tscn"
+WeaponSword="*res://Singletons/weapon_sword.gd"
 
 [editor_plugins]
 

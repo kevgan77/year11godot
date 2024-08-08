@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://yssjigg5mc78"]
+
+[ext_resource type="AudioStream" uid="uid://4eg1uihddjck" path="res://Sounds/Treachery.mp3" id="1_6eilw"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_6eilw")
+autoplay = true
