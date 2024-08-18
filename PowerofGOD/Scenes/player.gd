@@ -1,12 +1,19 @@
 extends CharacterBody2D
 
-
 @export var speed = 90.0
-@export var acceleration : float = 10.0
+@export var acceleration : float = 5.0
 @export var jump_velocity = -300.0
 @export var jumps = 1
+@export var max_health: int = 100
+@onready var stamina_bar = $Stamina_Bar
+@onready var health_bar = $Health_Bar
+@export var max_stamina = 100.0
 @export var health = 100
-
+var stamina = max_stamina
+var current_health: int
+@export var stamina_depletion_rate = 20.0
+@export var stamina_recovery_rate = 5.0
+@export var run_speed_multiplier = 1.5
 
 @export var bullet_node: PackedScene
 
@@ -15,7 +22,6 @@ enum state {IDLE, RUNNING, JUMP_DOWN, JUMP_UP, HIT, ATTACK}
 @export var anim_state = state.IDLE
 
 @onready var animator = $AnimatedSprite2D
-#@onready var animation_player = $AnimationPlayer
 @onready var start_pos = global_position
 @onready var attack_area = $AttackArea
 @onready var animation_player = $AnimationTree["parameters/playback"]
@@ -24,12 +30,34 @@ enum state {IDLE, RUNNING, JUMP_DOWN, JUMP_UP, HIT, ATTACK}
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+var can_run = true  # Track if the character can run
+
+func _ready():
+	current_health = max_health
+	health_bar = $Health_Bar
+	update_health_bar()
+
+func take_damage(amount: int= 5):
+	anim_state = state.HIT
+	current_health -= amount
+	if current_health < 0:
+		current_health = 0
+	update_health_bar()
+
+func heal(amount: int = 20):
+	current_health += amount
+	if current_health > max_health:
+		current_health = 0
+	update_health_bar()
+
+func update_health_bar():
+	health_bar.value = current_health
+
 func shoot():
 	var bullet = bullet_node.instantiate()
-	
 	bullet.position = global_position
 	bullet.direction = (get_global_mouse_position() - global_position).normalized()
-	get_tree().current_scene.call_deferred("add_child",bullet)
+	get_tree().current_scene.call_deferred("add_child", bullet)
 
 func _input(event):
 	if event.is_action("shoot"):
@@ -39,8 +67,6 @@ func reset():
 	global_position = start_pos
 	set_physics_process(true)
 	anim_state = state.IDLE
-	#animator.position = Vector2(0.-5)
-
 
 func update_state():
 	if anim_state == state.ATTACK:
@@ -56,10 +82,10 @@ func update_state():
 		if velocity.y < 0:
 			anim_state = state.JUMP_UP
 		else:
-			anim_state =  state.JUMP_DOWN
-
+			anim_state = state.JUMP_DOWN
 
 func update_animation(direction):
+
 	if direction > 0:
 		animator.flip_h = false
 		flip(false)
@@ -68,7 +94,6 @@ func update_animation(direction):
 		flip(true)
 	if anim_state != state.ATTACK : animation.speed_scale = 1
 	match anim_state:
-		
 		state.ATTACK:
 			animation.speed_scale = WeaponSword.knife_speed
 			animation_player.travel("attack")
@@ -92,6 +117,7 @@ func flip(val):
 		$CollisionShape2D.position.x = 1.5
 		animator.offset = Vector2(-6, -40)
 		attack_area.scale.x = -1
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -100,18 +126,46 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
-		
 	
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("left", "right")
-	if direction:
-		velocity.x = move_toward(velocity.x,direction*speed, acceleration)
+	var is_running = Input.is_action_pressed("run") and can_run
+	
+	if direction and anim_state != state.HIT:
+		var effective_speed = speed
+		if is_running and stamina > 0:
+			effective_speed *= run_speed_multiplier
+			stamina -= stamina_depletion_rate * delta
+			
+			# If stamina is depleted, stop running
+			if stamina <= 0:
+				stamina = 0
+				can_run = false  # Disable running until stamina is fully restored
+		else:
+			# Recover stamina if not running
+			stamina += stamina_recovery_rate * delta
+			
+		velocity.x = move_toward(velocity.x, direction * effective_speed, acceleration)
+		anim_state = state.RUNNING
 	else:
 		velocity.x = move_toward(velocity.x, 0, acceleration)
-		
+		if anim_state != state.HIT : anim_state = state.IDLE
+		stamina += stamina_recovery_rate * delta
+	
+	# Clamp stamina to its maximum value
+	stamina = clamp(stamina, 0, max_stamina)
+	
+	# Check if stamina has fully recovered
+	if stamina == max_stamina:
+		can_run = true
+	
+	# Update the stamina bar
+	stamina_bar.value = stamina
+	
 	if Input.is_action_just_pressed("attack"):
+
 		anim_state = state.ATTACK
+	
 	update_state()
 	update_animation(direction)
 	move_and_slide()
@@ -122,20 +176,17 @@ func enemy_checker(enemy):
 		velocity.y = jump_velocity
 	elif enemy.is_in_group("Hit"):
 		anim_state = state.HIT
-		
+		$Camera2D.start_shake()
 
 func _on_hit_box_area_entered(area):
 	enemy_checker(area)
 
-
 func _on_hit_box_body_entered(body):
 	enemy_checker(body)
 
-
 func _on_body_entered(body):
 	if body.is_in_group("Enemy"):
-		body.take_damage(WeaponSword.knife_damage)
-
+		body.take_damage()
 
 func _on_screen_exited():
 	queue_free()

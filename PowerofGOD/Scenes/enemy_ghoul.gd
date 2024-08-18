@@ -1,5 +1,5 @@
 extends Area2D
-var health = 2
+var health = 50
 var direction = 1
 var speed = 20
 

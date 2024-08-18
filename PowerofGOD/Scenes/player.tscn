@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://dysy05wseyym"]
+[gd_scene load_steps=114 format=3 uid="uid://dysy05wseyym"]
 
 [ext_resource type="Texture2D" uid="uid://dggjei5wad8b8" path="res://Sprites/Knight/_Idle.png" id="1_bj6h4"]
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_gjv0w"]
@@ -579,7 +579,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_5n5uj"]
 length = 2.0
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -669,7 +668,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_ll1gj"]
-loop_mode = 1
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -920,30 +919,38 @@ animation = &"running"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6cujc"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aol8k"]
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8iomt"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5a0oo"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v0f5f"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ycyy5"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aq1c6"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_qoa80"]
 states/End/position = Vector2(1130, 110)
 states/Start/position = Vector2(97, 132)
 states/attack/node = SubResource("AnimationNodeAnimation_sovm7")
-states/attack/position = Vector2(468, 45.4048)
+states/attack/position = Vector2(463, 13.4048)
 states/hit/node = SubResource("AnimationNodeAnimation_1w8r2")
 states/hit/position = Vector2(52, 25.405)
 states/idle/node = SubResource("AnimationNodeAnimation_kcr3v")
 states/idle/position = Vector2(249, 57.4048)
 states/jump_down/node = SubResource("AnimationNodeAnimation_a6da2")
-states/jump_down/position = Vector2(877, 39.4048)
+states/jump_down/position = Vector2(517, 166.405)
 states/jump_up/node = SubResource("AnimationNodeAnimation_1vq2v")
-states/jump_up/position = Vector2(616, 88.4048)
+states/jump_up/position = Vector2(365, 166.405)
 states/running/node = SubResource("AnimationNodeAnimation_r2ygl")
-states/running/position = Vector2(340, 183.405)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_kbmvs"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_qlyfa"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_b0dw7"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_6cujc"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_aol8k"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_8iomt"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_5a0oo")]
+states/running/position = Vector2(249, 182.405)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_kbmvs"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_qlyfa"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_b0dw7"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_6cujc"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_aol8k"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_8iomt"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_5a0oo"), "idle", "jump_up", SubResource("AnimationNodeStateMachineTransition_v0f5f"), "jump_up", "jump_down", SubResource("AnimationNodeStateMachineTransition_ycyy5"), "jump_down", "idle", SubResource("AnimationNodeStateMachineTransition_aq1c6")]
 graph_offset = Vector2(0, -24.5952)
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" groups=["Player", "Player_Attck"]]
 collision_layer = 259
 collision_mask = 257
 script = ExtResource("1_gjv0w")
@@ -956,8 +963,7 @@ shape = SubResource("CapsuleShape2D_kg4pq")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 16)
 sprite_frames = SubResource("SpriteFrames_nhwo6")
-animation = &"attack"
-frame = 7
+animation = &""
 offset = Vector2(-6, -40)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -987,6 +993,26 @@ shape = SubResource("CircleShape2D_lt4on")
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_qoa80")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="Stamina_Bar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.0
+offset_top = -19.0
+offset_right = -8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+value = 100.0
+
+[node name="Health_Bar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(100, 0)
+offset_top = -70.0
+offset_right = 4.0
+offset_bottom = -43.0
+value = 100.0
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="AttackArea/VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

@@ -1,5 +1,5 @@
 extends Area2D
-var health = 10
+var health = 100
 var direction = 1
 var speed = 20
 
@@ -26,6 +26,6 @@ func take_damage():
 func die():
 	queue_free()
 
-func _on_area_entered(area):
-	if area.is_in_group("Player_Attack"):
+func _on_body_entered(body):
+	if body.is_in_group("Player_Attack"):
 		take_damage()
