@@ -47,7 +47,8 @@ func take_damage(amount: int= 5):
 func heal(amount: int = 20):
 	current_health += amount
 	if current_health > max_health:
-		current_health = 0
+		current_health = 45
+		current_health += 10
 	update_health_bar()
 
 func update_health_bar():
@@ -177,6 +178,7 @@ func enemy_checker(enemy):
 	elif enemy.is_in_group("Hit"):
 		anim_state = state.HIT
 		$Camera2D.start_shake()
+		take_damage()
 
 func _on_hit_box_area_entered(area):
 	enemy_checker(area)
@@ -190,3 +192,14 @@ func _on_body_entered(body):
 
 func _on_screen_exited():
 	queue_free()
+
+
+func _on_dark_body_entered(body: Node2D) -> void:
+	$Camera2D/CanvasLayer/VignetteFader.play("Fade") # Replace with function body.
+	if is_in_group("Player"):
+		speed = 50
+
+func _on_dark_body_exited(body: Node2D) -> void:
+	$Camera2D/CanvasLayer/VignetteFader.play_backwards("Fade")
+	if is_in_group("Player"):
+		speed = 90.0
