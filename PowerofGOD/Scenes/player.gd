@@ -40,15 +40,17 @@ func _ready():
 func take_damage(amount: int= 5):
 	anim_state = state.HIT
 	current_health -= amount
-	if current_health < 0:
-		current_health = 0
+	if current_health <= 0:
+		anim_state = state.DEATH
+		#current_health = max_health
 	update_health_bar()
+
 
 func heal(amount: int = 20):
 	current_health += amount
-	if current_health > max_health:
-		current_health = 45
-		current_health += 10
+	if current_health < 45:
+		#current_health = 45
+		current_health += 5
 	update_health_bar()
 
 func update_health_bar():
@@ -108,6 +110,8 @@ func update_animation(direction):
 			animation_player.travel("jump_down")
 		state.HIT:
 			animation_player.travel("hit")
+		state.DEATH:
+			animation_player.travel("death")
 
 func flip(val):
 	if not val:
@@ -203,3 +207,13 @@ func _on_dark_body_exited(body: Node2D) -> void:
 	$Camera2D/CanvasLayer/VignetteFader.play_backwards("Fade")
 	if is_in_group("Player"):
 		speed = 90.0
+
+
+func _on_healing_timer_timeout(amount) -> void:
+	pass
+
+
+func _on_spikes_body_entered(body: Node2D) -> void:
+	if is_in_group("Player"):
+		take_damage(90)
+		

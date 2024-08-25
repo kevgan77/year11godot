@@ -303,6 +303,7 @@ text = "Boss Slained
 "
 
 [node name="debug" type="Label" parent="."]
+visible = false
 offset_left = -19.0
 offset_top = -10.0
 offset_right = 21.0
