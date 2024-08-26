@@ -26,6 +26,8 @@ enum state {IDLE, RUNNING, JUMP_DOWN, JUMP_UP, HIT, ATTACK}
 @onready var attack_area = $AttackArea
 @onready var animation_player = $AnimationTree["parameters/playback"]
 @onready var animation = $AnimationPlayer
+@onready var sfx_hit_2: AudioStreamPlayer2D = $"../sfx_hit2"
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -40,10 +42,11 @@ func _ready():
 func take_damage(amount: int= 5):
 	anim_state = state.HIT
 	current_health -= amount
-	if current_health <= 0:
-		anim_state = state.DEATH
+	#if current_health <= 0:
+		#anim_state = state.death
 		#current_health = max_health
 	update_health_bar()
+	sfx_hit_2.play()
 
 
 func heal(amount: int = 20):
@@ -110,8 +113,8 @@ func update_animation(direction):
 			animation_player.travel("jump_down")
 		state.HIT:
 			animation_player.travel("hit")
-		state.DEATH:
-			animation_player.travel("death")
+		#state.death:
+			#animation_player.travel("death")
 
 func flip(val):
 	if not val:
