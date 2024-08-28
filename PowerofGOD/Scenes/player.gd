@@ -204,12 +204,14 @@ func _on_screen_exited():
 func _on_dark_body_entered(body: Node2D) -> void:
 	$Camera2D/CanvasLayer/VignetteFader.play("Fade") # Replace with function body.
 	if is_in_group("Player"):
-		speed = 50
+		speed = 60
+		
 
 func _on_dark_body_exited(body: Node2D) -> void:
 	$Camera2D/CanvasLayer/VignetteFader.play_backwards("Fade")
 	if is_in_group("Player"):
 		speed = 90.0
+		
 
 
 func _on_healing_timer_timeout(amount) -> void:
