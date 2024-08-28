@@ -4912,7 +4912,6 @@ position = Vector2(605.5, 143)
 shape = SubResource("RectangleShape2D_t4tpf")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
 position = Vector2(32, 74)
 scale = Vector2(348.084, 173.486)
 color = Color(0, 0, 0, 1)
