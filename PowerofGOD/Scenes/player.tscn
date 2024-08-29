@@ -1021,7 +1021,7 @@ offset_bottom = -79.0
 value = 100.0
 
 [node name="HealingTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 1.5
 autostart = true
 
 [node name="HealingTimer2" type="Timer" parent="."]

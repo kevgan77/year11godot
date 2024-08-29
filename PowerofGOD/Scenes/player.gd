@@ -49,9 +49,9 @@ func take_damage(amount: int= 5):
 	sfx_hit_2.play()
 
 
-func heal(amount: int = 20):
+func heal(amount: int = 5):
 	current_health += amount
-	if current_health < 45:
+	if current_health < 15:
 		#current_health = 45
 		current_health += 5
 	update_health_bar()
@@ -214,8 +214,8 @@ func _on_dark_body_exited(body: Node2D) -> void:
 		
 
 
-func _on_healing_timer_timeout(amount) -> void:
-	pass
+func _on_healing_timer_timeout(amount = 1) -> void:
+	heal(amount)
 
 
 func _on_spikes_body_entered(body: Node2D) -> void:
