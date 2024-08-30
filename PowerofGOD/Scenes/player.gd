@@ -4,11 +4,11 @@ extends CharacterBody2D
 @export var acceleration : float = 5.0
 @export var jump_velocity = -300.0
 @export var jumps = 1
-@export var max_health: int = 100
+@export var max_health: int = 80
 @onready var stamina_bar = $Stamina_Bar
 @onready var health_bar = $Health_Bar
 @export var max_stamina = 100.0
-@export var health = 100
+@export var health = 80
 var stamina = max_stamina
 var current_health: int
 @export var stamina_depletion_rate = 20.0
@@ -58,6 +58,7 @@ func heal(amount: int = 5):
 
 func update_health_bar():
 	health_bar.value = current_health
+	%LifeBar.frame = health_bar.value/10
 
 func shoot():
 	var bullet = bullet_node.instantiate()
@@ -220,5 +221,5 @@ func _on_healing_timer_timeout(amount = 1) -> void:
 
 func _on_spikes_body_entered(body: Node2D) -> void:
 	if is_in_group("Player"):
-		take_damage(90)
+		take_damage(30)
 		
