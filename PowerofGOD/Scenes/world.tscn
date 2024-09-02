@@ -1951,9 +1951,6 @@ _data = {
 "RESET": SubResource("Animation_o1wgp")
 }
 
-[sub_resource type="Animation" id="Animation_mf4dw"]
-resource_name = "blood"
-
 [sub_resource type="Animation" id="Animation_3ndr7"]
 loop_mode = 1
 tracks/0/type = "value"
@@ -1980,6 +1977,9 @@ tracks/1/keys = {
 "update": 1,
 "values": ["attack"]
 }
+
+[sub_resource type="Animation" id="Animation_mf4dw"]
+resource_name = "blood"
 
 [sub_resource type="Animation" id="Animation_tab2a"]
 loop_mode = 1

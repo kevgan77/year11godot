@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dq6y3wtr8roe0"]
+[gd_scene load_steps=5 format=3 uid="uid://dq6y3wtr8roe0"]
 
 [ext_resource type="Script" path="res://Scenes/projectile.gd" id="1_rdrx4"]
 [ext_resource type="Texture2D" uid="uid://8wrwd4qin3on" path="res://EnemySprites/Necromancer_creativekind-Sheet.png" id="2_a1ef6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n60bt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_56wyu"]
 
 [node name="projectile" type="Area2D"]
 collision_layer = 3
@@ -20,4 +22,10 @@ shape = SubResource("RectangleShape2D_n60bt")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("RectangleShape2D_56wyu")
+
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_area_attack_body_entered"]

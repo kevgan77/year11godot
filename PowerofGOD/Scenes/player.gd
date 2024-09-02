@@ -26,7 +26,7 @@ enum state {IDLE, RUNNING, JUMP_DOWN, JUMP_UP, HIT, ATTACK}
 @onready var attack_area = $AttackArea
 @onready var animation_player = $AnimationTree["parameters/playback"]
 @onready var animation = $AnimationPlayer
-@onready var sfx_hit_2: AudioStreamPlayer2D = $"../sfx_hit2"
+#@onready var sfx_hit_2: AudioStreamPlayer2D = $"../sfx_hit2"
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -45,8 +45,11 @@ func take_damage(amount: int= 5):
 	#if current_health <= 0:
 		#anim_state = state.death
 		#current_health = max_health
+	if current_health == 0:
+		animation.play
 	update_health_bar()
-	sfx_hit_2.play()
+	#sfx_hit_2.play()
+	
 
 
 func heal(amount: int = 5):
@@ -204,13 +207,13 @@ func _on_screen_exited():
 
 func _on_dark_body_entered(body: Node2D) -> void:
 	$Camera2D/CanvasLayer/VignetteFader.play("Fade") # Replace with function body.
-	if is_in_group("Player"):
+	if body.is_in_group("Player"):
 		speed = 60
 		
 
 func _on_dark_body_exited(body: Node2D) -> void:
 	$Camera2D/CanvasLayer/VignetteFader.play_backwards("Fade")
-	if is_in_group("Player"):
+	if body.is_in_group("Player"):
 		speed = 90.0
 		
 
@@ -220,6 +223,6 @@ func _on_healing_timer_timeout(amount = 1) -> void:
 
 
 func _on_spikes_body_entered(body: Node2D) -> void:
-	if is_in_group("Player"):
+	if body.is_in_group("Player"):
 		take_damage(30)
 		
