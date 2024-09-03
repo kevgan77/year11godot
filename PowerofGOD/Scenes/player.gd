@@ -45,8 +45,9 @@ func take_damage(amount: int= 5):
 	#if current_health <= 0:
 		#anim_state = state.death
 		#current_health = max_health
-	if current_health == 0:
+	if current_health <= 0:
 		animation.play("death")
+		print("Working")
 	update_health_bar()
 	#sfx_hit_2.play()
 	
@@ -56,7 +57,10 @@ func heal(amount: int = 5):
 	current_health += amount
 	if current_health < 15:
 		#current_health = 45
-		current_health += 5
+		current_health += 1
+	if current_health <= 0:
+		current_health = 0
+		print("working health")
 	update_health_bar()
 
 func update_health_bar():
@@ -95,7 +99,6 @@ func update_state():
 			anim_state = state.JUMP_DOWN
 
 func update_animation(direction):
-
 	if direction > 0:
 		animator.flip_h = false
 		flip(false)
@@ -117,7 +120,7 @@ func update_animation(direction):
 			animation_player.travel("jump_down")
 		state.HIT:
 			animation_player.travel("hit")
-		#state.death:
+		#state.DEATH:
 			#animation_player.travel("death")
 
 func flip(val):

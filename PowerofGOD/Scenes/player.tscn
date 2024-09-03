@@ -1348,6 +1348,7 @@ active = false
 libraries = {
 "": SubResource("AnimationLibrary_8ptf6")
 }
+autoplay = "death"
 
 [node name="AttackArea" type="Area2D" parent="." groups=["Player_Attack"]]
 collision_layer = 3
