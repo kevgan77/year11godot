@@ -46,7 +46,7 @@ func take_damage(amount: int= 5):
 		#anim_state = state.death
 		#current_health = max_health
 	if current_health == 0:
-		animation.play
+		animation.play("death")
 	update_health_bar()
 	#sfx_hit_2.play()
 	
