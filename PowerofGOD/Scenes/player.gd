@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 @export var speed = 90.0
 @export var acceleration : float = 5.0
 @export var jump_velocity = -300.0
@@ -14,7 +16,7 @@ var current_health: int
 @export var stamina_depletion_rate = 20.0
 @export var stamina_recovery_rate = 5.0
 @export var run_speed_multiplier = 1.5
-
+var dead = false
 @export var bullet_node: PackedScene
 
 enum state {IDLE, RUNNING, JUMP_DOWN, JUMP_UP, HIT, ATTACK}
@@ -46,13 +48,12 @@ func take_damage(amount: int= 5):
 		#anim_state = state.death
 		#current_health = max_health
 	if current_health <= 0:
-		animation.play("death")
+		animation_player.travel("death")
 		print("Working")
+		dead = true
 	update_health_bar()
 	#sfx_hit_2.play()
 	
-
-
 func heal(amount: int = 5):
 	current_health += amount
 	if current_health < 15:
@@ -99,6 +100,8 @@ func update_state():
 			anim_state = state.JUMP_DOWN
 
 func update_animation(direction):
+	if dead:
+		return
 	if direction > 0:
 		animator.flip_h = false
 		flip(false)
@@ -135,6 +138,7 @@ func flip(val):
 
 func _physics_process(delta):
 	# Add the gravity.
+
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
