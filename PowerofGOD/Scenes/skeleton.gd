@@ -16,7 +16,6 @@ var health = 30:
  
 func _process(_delta):
 	direction = player.position - position
- 
 	if direction.x < 0:
 		sprite.flip_h = true
 		attack_area.scale.x = -1
