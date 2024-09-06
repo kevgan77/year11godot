@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 class_name Player
 
-const BOSS_ROOM_TEST = preload("res://Scenes/boss_room_test.tscn")
 @export var speed = 90.0
 @export var acceleration : float = 5.0
 @export var jump_velocity = -300.0
@@ -234,7 +233,3 @@ func _on_spikes_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		take_damage(30)
 		
-
-func _on_nextlevel_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		get_tree().change_scene_to_file("res://Scenes/boss_room_test.tscn")
