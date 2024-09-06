@@ -191,7 +191,7 @@ func _physics_process(delta):
 
 func enemy_checker(enemy):
 	if enemy.is_in_group("Enemy") and velocity.y > 0:
-		enemy.die()
+		#enemy.die()
 		velocity.y = jump_velocity
 	elif enemy.is_in_group("Hit"):
 		anim_state = state.HIT
@@ -233,3 +233,8 @@ func _on_spikes_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		take_damage(30)
 		
+
+
+func _on_next_level_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		get_tree().change_scene_to_file("res://Scenes/boss_room_test.tscn")
