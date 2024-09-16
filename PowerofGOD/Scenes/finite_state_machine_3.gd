@@ -10,8 +10,9 @@ func _ready() -> void:
 	current_state.enter()
 
 func change_state(state2):
-	current_state = find_child(state2) as State2
-	current_state.enter()
+	pass#current_state = find_child(state2) as State2
+	#current_state.enter()
+	
 	
 	previous_state.exit()
 	previous_state = current_state
