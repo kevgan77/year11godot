@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://c6a0vhe38m027"]
+[gd_scene load_steps=52 format=4 uid="uid://c6a0vhe38m027"]
 
 [ext_resource type="Texture2D" uid="uid://rfnckhxf531p" path="res://Maps/Environment1/env_ground.png" id="1_igieu"]
 [ext_resource type="PackedScene" uid="uid://cbk675s8v5day" path="res://Scenes/enemy_ghoul.tscn" id="2_7hlu7"]
@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://duuw3n876bl7d" path="res://Maps/Cementry/Environment2/sliced-objects/stone-1.png" id="10_akn7c"]
 [ext_resource type="PackedScene" uid="uid://dy575cv20uhgb" path="res://Scenes/respawn.tscn" id="14_c8wby"]
 [ext_resource type="Texture2D" uid="uid://ekm20mbeg3hq" path="res://Maps/Environment1/castle_env.png" id="15_7ho83"]
-[ext_resource type="AudioStream" uid="uid://ceda308gkfq5x" path="res://Sounds/hitHurt.wav" id="15_nvvcy"]
 [ext_resource type="Script" path="res://Scenes/timer.gd" id="19_qgd0r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e42hd"]
@@ -5317,11 +5316,6 @@ position = Vector2(2961, 144)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dark"]
 position = Vector2(5215, 452)
 shape = SubResource("RectangleShape2D_pdumm")
-
-[node name="sfx_hit2" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(2892, 136)
-stream = ExtResource("15_nvvcy")
-volume_db = 3.0
 
 [node name="Next_level" type="Area2D" parent="."]
 
