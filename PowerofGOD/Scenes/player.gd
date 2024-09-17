@@ -29,6 +29,7 @@ enum state {IDLE, RUNNING, JUMP_DOWN, JUMP_UP, HIT, ATTACK}
 @onready var animation_player = $AnimationTree["parameters/playback"]
 @onready var animation = $AnimationPlayer
 #@onready var sfx_hit_2: AudioStreamPlayer2D = $"../sfx_hit2"
+#var death_scene 
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -189,6 +190,9 @@ func _physics_process(delta):
 	update_animation(direction)
 	move_and_slide()
 
+func death_scene():
+	pass
+	
 func enemy_checker(enemy):
 	if enemy.is_in_group("Enemy") and velocity.y > 0:
 		#enemy.die()

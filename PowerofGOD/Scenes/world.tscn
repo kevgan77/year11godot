@@ -5212,6 +5212,7 @@ self_modulate = Color(1, 0.16, 0.16, 1)
 offset_right = 1184.0
 offset_bottom = 703.0
 color = Color(0.209099, 0.189424, 0.432399, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Moon" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0, 0)

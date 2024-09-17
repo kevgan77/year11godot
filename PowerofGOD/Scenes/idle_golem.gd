@@ -1,4 +1,4 @@
-extends State2
+extends State
 
 @onready var collision = $"../../PlayerDetection/CollisionShape2D"
 @onready var progress_bar = owner.find_child("ProgressBar")

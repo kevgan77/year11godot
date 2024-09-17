@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjqlpe81ebals"]
+[gd_scene load_steps=12 format=3 uid="uid://cjqlpe81ebals"]
 
 [ext_resource type="PackedScene" uid="uid://dheyy6dais2yt" path="res://Scenes/necromancer.tscn" id="1_k5nok"]
 [ext_resource type="PackedScene" uid="uid://dysy05wseyym" path="res://Scenes/player.tscn" id="3_hjwbr"]
@@ -189,15 +189,54 @@ terrain_set_0/terrain_1/name = "Terrain 1"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_jpwf4")
 
+[sub_resource type="Animation" id="Animation_w6imx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.16, 0.16, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_go01d"]
+resource_name = "background"
+length = 30.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 13.5, 30),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0.0117647, 1), Color(0.913725, 0, 0.27451, 1), Color(1, 0.0509804, 0.156863, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fdhp0"]
+_data = {
+"RESET": SubResource("Animation_w6imx"),
+"background": SubResource("Animation_go01d")
+}
+
 [node name="BossRoomTest" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-229, -187)
 tile_set = SubResource("TileSet_xg6dk")
 format = 2
 layer_0/tile_data = PackedInt32Array(1572885, 458752, 5, 1572886, 458752, 5, 1572887, 393216, 5, 1572888, 327680, 5, 1572889, 458752, 5, 1572890, 327680, 5, 1572891, 458752, 5, 1572892, 393216, 5, 1572893, 327680, 5, 1572894, 327680, 5, 1572895, 393216, 5, 1572896, 458752, 5, 1572897, 393216, 5, 1572898, 327680, 5, 1572899, 327680, 5, 1572900, 262144, 5, 1572901, 458752, 5, 1572902, 458752, 5, 1572903, 458752, 5, 1572904, 458752, 5, 1572905, 327680, 5, 1572906, 327680, 5, 1572907, 327680, 5, 1572908, 262144, 5, 1572909, 262144, 5, 1572910, 458752, 5, 1572911, 393216, 5, 1572912, 458752, 5, 1572913, 327680, 5, 1572914, 458752, 5, 1572915, 393216, 5, 1572916, 393216, 5, 1572917, 262144, 5, 1572918, 262144, 5, 1572919, 327680, 5, 1572920, 327680, 5, 1507384, 262144, 4, 1507385, 327680, 4, 1507386, 393216, 4, 1507387, 262144, 4, 1507388, 262144, 4, 1507389, 458752, 4, 1507383, 327680, 4, 1507382, 262144, 4, 1507381, 262144, 4, 1507380, 262144, 4, 1507379, 327680, 4, 1507378, 327680, 4, 1507377, 458752, 4, 1507376, 393216, 4, 1507375, 327680, 4, 1507374, 458752, 4, 1507373, 458752, 4, 1507372, 393216, 4, 1507371, 262144, 4, 1507370, 458752, 4, 1507369, 393216, 4, 1507368, 393216, 4, 1507367, 458752, 4, 1507366, 327680, 4, 1507365, 393216, 4, 1507364, 393216, 4, 1507363, 327680, 4, 1507362, 458752, 4, 1507361, 393216, 4, 1507360, 458752, 4, 1507359, 262144, 4, 1507358, 393216, 4, 1507357, 327680, 4, 1507356, 327680, 4, 1507355, 393216, 4, 1507354, 262144, 4, 1507353, 327680, 4, 1507352, 458752, 4, 1507351, 393216, 4, 1507350, 262144, 4, 1507349, 262144, 4, 1572921, 327680, 5, 1572922, 458752, 5, 1572923, 458752, 5, 1572924, 262144, 5, 1572925, 262144, 5)
 
 [node name="Player" parent="." instance=ExtResource("3_hjwbr")]
-position = Vector2(368, 350)
+position = Vector2(202, 155)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-3, -3)
@@ -205,7 +244,7 @@ zoom = Vector2(2.5, 2.5)
 position_smoothing_enabled = true
 
 [node name="Necromancer" parent="." instance=ExtResource("1_k5nok")]
-position = Vector2(836, 320)
+position = Vector2(670, 125)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 visible = false
@@ -237,3 +276,61 @@ offset_top = 123.0
 offset_right = 384.0
 offset_bottom = 246.0
 texture = ExtResource("5_cykd4")
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground2"]
+self_modulate = Color(1, 0.16, 0.16, 1)
+offset_right = 1184.0
+offset_bottom = 703.0
+color = Color(0.209099, 0.189424, 0.432399, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Moon" type="ParallaxLayer" parent="ParallaxBackground2"]
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(768, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground2/Moon"]
+modulate = Color(1, 1, 1, 0.501961)
+offset_right = 768.0
+offset_bottom = 224.0
+texture = ExtResource("4_uaqe2")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Mountains" type="ParallaxLayer" parent="ParallaxBackground2"]
+motion_scale = Vector2(0.3, 0)
+motion_mirroring = Vector2(660, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground2/Mountains"]
+offset_top = 45.0
+offset_right = 880.0
+offset_bottom = 224.0
+texture = ExtResource("6_psuub")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="background1" type="ParallaxLayer" parent="ParallaxBackground2"]
+motion_scale = Vector2(0.7, 0)
+motion_mirroring = Vector2(660, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground2/background1"]
+offset_top = 84.0
+offset_right = 880.0
+offset_bottom = 207.0
+texture = ExtResource("5_cykd4")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground2/ParallaxLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground2"]
+libraries = {
+"": SubResource("AnimationLibrary_fdhp0")
+}
+autoplay = "background"
