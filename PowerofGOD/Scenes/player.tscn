@@ -1334,6 +1334,16 @@ animations = [{
 collision_layer = 259
 collision_mask = 257
 script = ExtResource("1_gjv0w")
+speed = null
+acceleration = null
+jump_velocity = null
+jumps = null
+max_health = null
+max_stamina = null
+health = null
+stamina_depletion_rate = null
+stamina_recovery_rate = null
+run_speed_multiplier = null
 bullet_node = ExtResource("2_rlk81")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

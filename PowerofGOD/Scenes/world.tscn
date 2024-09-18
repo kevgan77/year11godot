@@ -5152,6 +5152,16 @@ tile_set = SubResource("TileSet_klqvg")
 
 [node name="Player" parent="." instance=ExtResource("2_iug65")]
 position = Vector2(58, 81)
+speed = 90.0
+acceleration = 5.0
+jump_velocity = -300.0
+jumps = 1
+max_health = 80
+max_stamina = 100.0
+health = 80
+stamina_depletion_rate = 20.0
+stamina_recovery_rate = 5.0
+run_speed_multiplier = 1.5
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-2, -24)

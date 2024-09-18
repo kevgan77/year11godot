@@ -1,7 +1,39 @@
 extends Node2D
 
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D.new()
 
-var music_tracks = preload("res://Sounds/Treachery.mp3")
+var music_tracks = {
+	"SSS": "res://Sounds/Treachery.mp3",
 
-var sound_effects = preload("res://Sounds/hitHurt.wav")
+}
+
+var sound_effects = {
+	"hit":"res://Sounds/hitHurt.wav",
+	"sword":"res://Singletons/weapon_sword.gd",
+	 
+	}
+
+var music_db = 1
+var sound_db = 1
+
+func change_music_db(val: float) -> void:
+	music_db = linear_to_db(val)
+	
+func change_sound_db(val: float) -> void:
+	sound_db = linear_to_db(val)
+	
+func _ready() -> void:
+	audio_stream_player_2d.stream = load(music_tracks["SSS"])
+	add_child(audio_stream_player_2d)
+	audio_stream_player_2d.play()
+	print("W MUSIC")
+	print("PLAYING SONG")
+
+func play_sound_effects(sfx):
+	var sound = audio_stream_player_2d.new()
+	sound.stream = load(sound_effects["sword"])
+	add_child(sound)
+	sound.play()
+	await sound.finished
+	sound.queue_free()
+	
