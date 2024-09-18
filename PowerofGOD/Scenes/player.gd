@@ -191,7 +191,8 @@ func _physics_process(delta):
 	stamina_bar.value = stamina
 	
 	if Input.is_action_just_pressed("attack"):
-
+		SoundPlayer.play("sword")
+		print("W")
 		anim_state = state.ATTACK
 	
 	update_state()
