@@ -29,7 +29,7 @@ enum state {IDLE, RUNNING, JUMP_DOWN, JUMP_UP, HIT, ATTACK}
 @onready var animation_player = $AnimationTree["parameters/playback"]
 @onready var animation = $AnimationPlayer
 @onready var player_hit: AudioStreamPlayer2D = $PlayerHit
-var SoundPlayer = preload("res://Scenes/sound_player.gd")
+const DEATH_SCENE = preload("res://Scenes/death_scene.tscn")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -191,7 +191,7 @@ func _physics_process(delta):
 	stamina_bar.value = stamina
 	
 	if Input.is_action_just_pressed("attack"):
-		SoundPlayer.play("sword")
+		SoundPlayer.play_sfx("sword")
 		print("W")
 		anim_state = state.ATTACK
 	
@@ -201,7 +201,7 @@ func _physics_process(delta):
 
 func death_scene():
 	pass
-	
+		
 func enemy_checker(enemy):
 	if enemy.is_in_group("Enemy") and velocity.y > 0:
 		#enemy.die()

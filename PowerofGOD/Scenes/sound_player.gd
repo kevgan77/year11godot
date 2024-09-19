@@ -15,7 +15,7 @@ var sound_effects = {
 	}
 
 var music_db = 1
-var sound_db = 1
+var sound_db = 1.5
 
 func change_music_db(val: float) -> void:
 	music_db = linear_to_db(val)
@@ -28,8 +28,8 @@ func _ready() -> void:
 	add_child(audio_stream_player_2d)
 	audio_stream_player_2d.play()
 
-func play_sound_effects(sfx):
-	var sound = audio_stream_player_2d.new()
+func play_sfx(sfx):
+	var sound = audio_stream_player_2d.duplicate()
 	sound.stream = load(sound_effects["sword"])
 	add_child(sound)
 	sound.play()
