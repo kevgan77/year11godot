@@ -17,9 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-BgMusictest="*res://Scenes/BG_musictest.tscn"
 WeaponSword="*res://Singletons/weapon_sword.gd"
 SoundPlayer="*res://Scenes/sound_player.gd"
+Ui="*res://Scenes/ui.gd"
 
 [editor_plugins]
 

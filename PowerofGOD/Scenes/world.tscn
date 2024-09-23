@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://c6a0vhe38m027"]
+[gd_scene load_steps=53 format=4 uid="uid://c6a0vhe38m027"]
 
 [ext_resource type="Texture2D" uid="uid://rfnckhxf531p" path="res://Maps/Environment1/env_ground.png" id="1_igieu"]
 [ext_resource type="PackedScene" uid="uid://cbk675s8v5day" path="res://Scenes/enemy_ghoul.tscn" id="2_7hlu7"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://duuw3n876bl7d" path="res://Maps/Cementry/Environment2/sliced-objects/stone-1.png" id="10_akn7c"]
 [ext_resource type="PackedScene" uid="uid://dy575cv20uhgb" path="res://Scenes/respawn.tscn" id="14_c8wby"]
 [ext_resource type="Texture2D" uid="uid://ekm20mbeg3hq" path="res://Maps/Environment1/castle_env.png" id="15_7ho83"]
+[ext_resource type="PackedScene" uid="uid://dwmkr0jkfvuok" path="res://Scenes/ui.tscn" id="19_cxonv"]
 [ext_resource type="Script" path="res://Scenes/timer.gd" id="19_qgd0r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e42hd"]
@@ -5334,6 +5335,14 @@ autostart = true
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Timer:"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("19_cxonv")]
+offset_left = 305.0
+offset_top = 61.0
+offset_right = 305.0
+offset_bottom = 61.0
 
 [connection signal="body_entered" from="TileMap/Spikes" to="Player" method="_on_spikes_body_entered"]
 [connection signal="body_entered" from="Dark" to="Player" method="_on_dark_body_entered"]

@@ -10,7 +10,7 @@ var music_tracks = {
 
 var sound_effects = {
 	"hit":"res://Sounds/hitHurt.wav",
-	"sword":"res://Singletons/weapon_sword.gd",
+	"sword":"res://Sounds/sword.wav.wav",
 	 
 	}
 
@@ -24,9 +24,9 @@ func change_sound_db(val: float) -> void:
 	sound_db = linear_to_db(val)
 	
 func _ready() -> void:
-	audio_stream_player_2d.stream = load(music_tracks["menu"])
-	add_child(audio_stream_player_2d)
-	audio_stream_player_2d.play()
+	pass#audio_stream_player_2d.stream = load(music_tracks["menu"])
+	#add_child(audio_stream_player_2d)
+	#audio_stream_player_2d.play()
 
 func play_sfx(sfx):
 	var sound = audio_stream_player_2d.duplicate()
