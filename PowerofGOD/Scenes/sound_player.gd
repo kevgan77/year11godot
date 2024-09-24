@@ -28,11 +28,13 @@ func _ready() -> void:
 	#add_child(audio_stream_player_2d)
 	#audio_stream_player_2d.play()
 
-func play_sfx(sfx):
-	var sound = audio_stream_player_2d.duplicate()
-	sound.stream = load(sound_effects["sword"])
+func play_sfx(sfx) :
+	var sound : AudioStreamPlayer2D = audio_stream_player_2d.duplicate()
+	sound.stream = load(sound_effects[sfx])
 	add_child(sound)
 	sound.play()
 	await sound.finished
+	print("sound finished")
 	sound.queue_free()
+	
 	

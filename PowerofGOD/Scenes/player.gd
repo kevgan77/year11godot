@@ -18,7 +18,7 @@ var current_health: int
 @export var run_speed_multiplier = 1.5
 var dead = false
 @export var bullet_node: PackedScene
-
+var attacking = false
 enum state {IDLE, RUNNING, JUMP_DOWN, JUMP_UP, HIT, ATTACK}
 
 @export var anim_state = state.IDLE
@@ -51,6 +51,7 @@ func take_damage(amount: int= 5):
 		#current_health = max_health
 	if current_health <= 0:
 		animation_player.travel("death")
+		get_tree().change_scene_to_file("res://Scenes/death_scene.tscn")
 		#print("Working")
 		dead = true
 	update_health_bar()
@@ -190,18 +191,22 @@ func _physics_process(delta):
 	# Update the stamina bar
 	stamina_bar.value = stamina
 	
-	if Input.is_action_just_pressed("attack"):
-		SoundPlayer.play_sfx("sword")
-		print("W")
+	if Input.is_action_just_pressed("attack") and not attacking:
 		anim_state = state.ATTACK
+		
 	
 	update_state()
 	update_animation(direction)
 	move_and_slide()
 
-func death_scene():
-	pass
-		
+func play_sword_sound():
+	SoundPlayer.play_sfx("sword")
+	
+
+#func death_scene():
+	#if health <= 0:
+		#get_tree().change_scene_to_file("res://Scenes/death_scene.tscn")
+
 func enemy_checker(enemy):
 	if enemy.is_in_group("Enemy") and velocity.y > 0:
 		#enemy.die()

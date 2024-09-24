@@ -1,10 +1,11 @@
-[gd_scene load_steps=172 format=3 uid="uid://dysy05wseyym"]
+[gd_scene load_steps=173 format=3 uid="uid://dysy05wseyym"]
 
 [ext_resource type="Texture2D" uid="uid://dggjei5wad8b8" path="res://Sprites/Knight/_Idle.png" id="1_bj6h4"]
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_gjv0w"]
 [ext_resource type="Texture2D" uid="uid://dk6wo3wgy3pvi" path="res://Sprites/Knight/_Attack2NoMovement.png" id="2_72cl4"]
 [ext_resource type="PackedScene" uid="uid://df3kmlvjelg04" path="res://Scenes/fireball.tscn" id="2_rlk81"]
 [ext_resource type="Texture2D" uid="uid://jmlcmavgam8q" path="res://Sprites/Knight/_Death.png" id="3_bluhp"]
+[ext_resource type="PackedScene" uid="uid://d01fik8agkuux" path="res://Scenes/death_scene.tscn" id="3_f6bv5"]
 [ext_resource type="Texture2D" uid="uid://mlgimufy7d0s" path="res://Sprites/Knight/_Run.png" id="3_ju3ha"]
 [ext_resource type="Texture2D" uid="uid://dunfg620f2xb1" path="res://Sprites/Knight/_Hit.png" id="3_n4gxg"]
 [ext_resource type="Texture2D" uid="uid://2uhhgfulskt1" path="res://Sprites/Knight/_AttackCombo2hit.png" id="3_rcud8"]
@@ -640,6 +641,23 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, true, false, true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_sword_sound"
+}, {
+"args": [],
+"method": &"play_sword_sound"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_cj3ct"]
@@ -1335,6 +1353,9 @@ collision_layer = 259
 collision_mask = 257
 script = ExtResource("1_gjv0w")
 bullet_node = ExtResource("2_rlk81")
+
+[node name="DeathScene" parent="." instance=ExtResource("3_f6bv5")]
+mouse_filter = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -1.5)
