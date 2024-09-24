@@ -44,6 +44,7 @@ func _ready():
 func take_damage(amount: int= 5):
 	anim_state = state.HIT
 	current_health -= amount
+	SoundPlayer.play_sfx("hit")
 	#$PlayerHit.play()
 	#print("HIT")
 	#if current_health <= 0:
@@ -51,6 +52,8 @@ func take_damage(amount: int= 5):
 		#current_health = max_health
 	if current_health <= 0:
 		animation_player.travel("death")
+		SoundPlayer.play_sfx("womp")
+		print("good")
 		get_tree().change_scene_to_file("res://Scenes/death_scene.tscn")
 		#print("Working")
 		dead = true
@@ -155,6 +158,8 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
+		SoundPlayer.play_sfx("jump")
+		print("JUMPED")
 	
 	# Get the input direction and handle the movement/deceleration.
 	var direction = Input.get_axis("left", "right")
@@ -198,6 +203,10 @@ func _physics_process(delta):
 	update_state()
 	update_animation(direction)
 	move_and_slide()
+
+#func play_jump_sound():
+	#SoundPlayer.play_sfx("jump")
+	#print("JUMPED")
 
 func play_sword_sound():
 	SoundPlayer.play_sfx("sword")
@@ -251,6 +260,7 @@ func _on_healing_timer_timeout(amount = 1) -> void:
 func _on_spikes_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		take_damage(30)
+		SoundPlayer.play_sfx("hit")
 		
 
 

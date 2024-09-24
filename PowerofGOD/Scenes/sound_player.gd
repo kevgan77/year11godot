@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
+@onready var audio_stream_player_2d: AudioStreamPlayer = AudioStreamPlayer.new()
 
 var music_tracks = {
 	"SSS": "res://Sounds/Treachery.mp3",
@@ -11,7 +11,8 @@ var music_tracks = {
 var sound_effects = {
 	"hit":"res://Sounds/hitHurt.wav",
 	"sword":"res://Sounds/sword.wav.wav",
-	 
+	"jump":"res://Sounds/jump.wav",
+	"womp":"res://Sounds/womp_womp.mp3"
 	}
 
 var music_db = 1
@@ -29,7 +30,7 @@ func _ready() -> void:
 	#audio_stream_player_2d.play()
 
 func play_sfx(sfx) :
-	var sound : AudioStreamPlayer2D = audio_stream_player_2d.duplicate()
+	var sound : AudioStreamPlayer = audio_stream_player_2d.duplicate()
 	sound.stream = load(sound_effects[sfx])
 	add_child(sound)
 	sound.play()
