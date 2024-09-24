@@ -201,6 +201,7 @@ func _physics_process(delta):
 
 func play_sword_sound():
 	SoundPlayer.play_sfx("sword")
+	print("SOUND GOOD")
 	
 
 #func death_scene():
