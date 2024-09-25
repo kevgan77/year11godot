@@ -19,7 +19,8 @@ func _on_timer_timeout():
 	direction *= -1
 
 func take_damage():
-	$AnimatedSprite2D.animation = "hit"
+	set_process(false)
+	$AnimatedSprite2D.play("hit")
 	await $AnimatedSprite2D.animation_finished
 	queue_free()
 
@@ -28,4 +29,9 @@ func die():
 
 func _on_body_entered(body):
 	if body.is_in_group("Player_Attack"):
+		take_damage()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Player_Attack"):
 		take_damage()

@@ -25,12 +25,14 @@ func _on_timer_timeout():
 	direction *= -1
 	
 func take_damage(amount: int = 5):
-	if health <= max_health:
-		take_damage()
+	health -= amount
+	#if health <= max_health:
+		#take_damage()
 	#if health = amount:
-	#$AnimatedSprite2D.animation = "hit"
+	$AnimatedSprite2D.play("hit")
 	await $AnimatedSprite2D.animation_finished
-	queue_free()
+	if health < 0:
+		queue_free()
 
 func die():
 	queue_free()
