@@ -5152,7 +5152,25 @@ tile_map_data = PackedByteArray("AADdAAkAAAATAAgAAADdAAoAAAATAAcAAADeAAkAAAAWAAc
 tile_set = SubResource("TileSet_klqvg")
 
 [node name="Player" parent="." instance=ExtResource("2_iug65")]
-position = Vector2(63, 75)
+position = Vector2(3011, 136)
+
+[node name="ColorRect" parent="Player/DeathScene" index="0"]
+z_index = 1
+
+[node name="YouDiedLabel" parent="Player/DeathScene" index="1"]
+z_index = 4
+
+[node name="Continue" parent="Player/DeathScene" index="2"]
+z_index = 4
+
+[node name="ContinueLabel" parent="Player/DeathScene/Continue" index="0"]
+z_index = 4
+
+[node name="Quit" parent="Player/DeathScene" index="3"]
+z_index = 4
+
+[node name="QuitLabel" parent="Player/DeathScene/Quit" index="0"]
+z_index = 4
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-2, -24)
@@ -5348,3 +5366,7 @@ offset_bottom = 61.0
 [connection signal="body_entered" from="Dark" to="Player" method="_on_dark_body_entered"]
 [connection signal="body_exited" from="Dark" to="Player" method="_on_dark_body_exited"]
 [connection signal="body_entered" from="Next_level" to="Player" method="_on_next_level_body_entered"]
+
+[editable path="Player"]
+[editable path="Player/DeathScene"]
+[editable path="CanvasLayer/UI"]
