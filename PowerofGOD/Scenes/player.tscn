@@ -1403,10 +1403,11 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="Stamina_Bar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(100, 0)
-offset_left = -115.0
-offset_top = -78.0
-offset_right = -15.0
-offset_bottom = -51.0
+offset_left = -75.0
+offset_top = -64.0
+offset_right = 25.0
+offset_bottom = -37.0
+scale = Vector2(0.571661, 0.494289)
 size_flags_horizontal = 4
 value = 100.0
 
