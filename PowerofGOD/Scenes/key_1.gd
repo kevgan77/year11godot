@@ -1,6 +1,6 @@
 extends Area2D
 
-#var key_scene = preload("res://Scenes/key_1.tscn")
+#var key_scene = "res://Scenes/key_1.tscn"
 #add_child(key_instance)  
 
 #func collected():

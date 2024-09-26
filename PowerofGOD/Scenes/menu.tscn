@@ -1,69 +1,75 @@
 [gd_scene load_steps=4 format=3 uid="uid://ciwovalfoorc1"]
 
 [ext_resource type="Script" path="res://Scenes/Menu.gd" id="1_se0pm"]
-[ext_resource type="Texture2D" uid="uid://bqs54isfpd2bn" path="res://Sounds/awlh.jpg" id="2_ieax2"]
+[ext_resource type="Texture2D" uid="uid://c7il2gxnyyxn6" path="res://Sprites/SolarFlare.jpg" id="2_fkbly"]
 [ext_resource type="AudioStream" uid="uid://4eg1uihddjck" path="res://Sounds/Treachery.mp3" id="2_kprk2"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 65.0
-offset_bottom = 178.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -89.0
+offset_right = 32.5
+offset_bottom = 89.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_se0pm")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -608.0
-offset_top = -872.0
-offset_right = 608.0
-offset_bottom = 152.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("2_ieax2")
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="TextureRect2" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -40.5
-offset_top = -50.5
-offset_right = 40.5
-offset_bottom = 50.5
+offset_left = -608.5
+offset_top = -508.0
+offset_right = 506.5
+offset_bottom = 627.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.68127, 1.73156)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Play"
-
-[node name="Play Boss" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Play Boss"
-
-[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Exit"
+scale = Vector2(1.08522, 1.03811)
+texture = ExtResource("2_fkbly")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_kprk2")
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Play Boss" to="." method="_on_play_boss_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.5
+offset_top = -50.5
+offset_right = 39.5
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Tutorial" type="Button" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "Tutorial"
+
+[node name="Play" type="Button" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "Play"
+
+[node name="Exit" type="Button" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "Exit"
+
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/Play" to="." method="_on_play_pressed"]

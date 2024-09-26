@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 
+#Here are all of the variable.
 @export var speed = 90.0
 @export var acceleration : float = 5.0
 @export var jump_velocity = -300.0
@@ -267,3 +268,19 @@ func _on_spikes_body_entered(body: Node2D) -> void:
 func _on_next_level_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		get_tree().change_scene_to_file("res://Scenes/boss_room_test.tscn")
+
+
+
+func _on_tutorial_end_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+
+
+func _on_space_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		get_tree().change_scene_to_file("res://Scenes/death_scene.tscn")
+
+
+func _on_space_world_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		get_tree().change_scene_to_file("res://Scenes/death_scene.tscn")
