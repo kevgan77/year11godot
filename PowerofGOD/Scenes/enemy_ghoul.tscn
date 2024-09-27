@@ -860,6 +860,78 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("9_886f6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_137i8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8wc20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jd4mg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_koqf7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wk7od")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gww2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_e05kq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_886f6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_137i8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8wc20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jd4mg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_koqf7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wk7od")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gww2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_e05kq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_886f6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_137i8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8wc20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jd4mg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_koqf7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wk7od")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gww2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_e05kq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_886f6")
 }],
 "loop": false,
 "name": &"default",
@@ -895,6 +967,7 @@ shape = SubResource("CapsuleShape2D_eu3em")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_i2rxu")
+animation = &"hit"
 autoplay = "default"
 
 [node name="Timer" type="Timer" parent="."]

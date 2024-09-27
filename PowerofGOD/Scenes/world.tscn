@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://c6a0vhe38m027"]
+[gd_scene load_steps=52 format=4 uid="uid://c6a0vhe38m027"]
 
 [ext_resource type="Texture2D" uid="uid://rfnckhxf531p" path="res://Maps/Environment1/env_ground.png" id="1_igieu"]
 [ext_resource type="PackedScene" uid="uid://cbk675s8v5day" path="res://Scenes/enemy_ghoul.tscn" id="2_7hlu7"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://cjqtx5f3s4rb6" path="res://Maps/Cementry/Environment2/graveyard.png" id="6_r6mdn"]
 [ext_resource type="PackedScene" uid="uid://bh6ff4xit4i52" path="res://Scenes/enemy_skeleton.tscn" id="6_yx7pd"]
 [ext_resource type="Texture2D" uid="uid://cjnwiyrx8ou6g" path="res://Effects/blood.png" id="7_1hu52"]
-[ext_resource type="PackedScene" uid="uid://dxsmlt1g8a186" path="res://Scenes/key_1.tscn" id="9_p81sp"]
 [ext_resource type="Texture2D" uid="uid://djhs20r30738r" path="res://Maps/Cementry/Environment2/sliced-objects/bush-small.png" id="9_vqx7b"]
 [ext_resource type="Texture2D" uid="uid://duuw3n876bl7d" path="res://Maps/Cementry/Environment2/sliced-objects/stone-1.png" id="10_akn7c"]
 [ext_resource type="PackedScene" uid="uid://dy575cv20uhgb" path="res://Scenes/respawn.tscn" id="14_c8wby"]
@@ -5307,9 +5306,6 @@ position = Vector2(486, 73)
 
 [node name="EnemySkeleton3" parent="." instance=ExtResource("6_yx7pd")]
 position = Vector2(829, 15)
-
-[node name="Key 1" parent="." instance=ExtResource("9_p81sp")]
-position = Vector2(259, 77)
 
 [node name="Bush-small" type="Sprite2D" parent="."]
 position = Vector2(322, 85)

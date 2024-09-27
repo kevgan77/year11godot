@@ -5,7 +5,8 @@ extends Node2D
 var music_tracks = {
 	"SSS": "res://Sounds/Treachery.mp3",
 	"menu": "res://Sounds/Menu music.mp3",
-	
+	"Envi": "res://Sounds/Environment or Battle.mp3",
+	"Flamenco": "res://Sounds/Dance in the Firelight.mp3",
 }
 
 var sound_effects = {
@@ -25,10 +26,14 @@ func change_sound_db(val: float) -> void:
 	sound_db = linear_to_db(val)
 	
 func _ready() -> void:
-	pass#audio_stream_player_2d.stream = load(music_tracks["menu"])
-	#add_child(audio_stream_player_2d)
-	#audio_stream_player_2d.play()
+	audio_stream_player_2d.stream = load(music_tracks["Flamenco"])
+	add_child(audio_stream_player_2d)
+	audio_stream_player_2d.play()
 
+func change_music_track(track):
+	audio_stream_player_2d.stream = load(music_tracks[track])
+	audio_stream_player_2d.play()
+	
 func play_sfx(sfx) :
 	var sound : AudioStreamPlayer = audio_stream_player_2d.duplicate()
 	sound.stream = load(sound_effects[sfx])
@@ -38,4 +43,6 @@ func play_sfx(sfx) :
 	print("sound finished")
 	sound.queue_free()
 	
-	
+#func _exit_tree() -> void:
+	#audio_stream_player_2d.stop()
+	#audio_stream_player_2d.queue_free()
